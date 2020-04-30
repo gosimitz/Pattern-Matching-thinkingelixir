@@ -1,5 +1,7 @@
 # Pattern Matching
 
+## Project modified by Gus Osimitz
+
 ## Notice
 
 This project is a companion to the "Thinking Elixir - PatternMatching" course,
