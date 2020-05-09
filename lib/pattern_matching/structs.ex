@@ -12,16 +12,19 @@ defmodule PatternMatching.Structs do
   """
   alias PatternMatching.{Customer, User}
 
-  def get_name(_value) do
+  def get_name(%{name: name}) do
+    {:ok, name}
+  end
+  def get_name(_other), do: {:error, "Doesn't have a name"}
 
+  def create_greeting(%Customer{active: true, name: name}), do: {:ok, "Howdy customer #{name}!"}
+  def create_greeting(%User{active: true, name: name}), do: {:ok, "Greetings user #{name}!"}
+  def create_greeting(_other), do: {:error, "Recipient is inactive"}
+
+
+  def deactivate_user(%User{} = user) do
+    {:ok, %User{user | active: false}}
   end
 
-  def create_greeting(_value) do
-
-  end
-
-  def deactivate_user(_user) do
-
-  end
-
+  def deactivate_user(_other), do: {:error, "Not a User"}
 end
